@@ -51,7 +51,7 @@ const getRaw = id => Number(document.getElementById(id).value.replace(/[^0-9]/g,
 
 const resetInsurance = () => {
     insuranceBox.style.display = 'none';
-    insuranceRate.value = "0";
+    insuranceRate.value = "";
     hide(errorEmptyBH);
 };
 
