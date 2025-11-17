@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Tính Trả Góp</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="css/bttg.css">
+</head>
+
+<body>
+    <header id="mainHeader">
+        <div class="hamburger" id="hamburger">☰</div>
+        <div class="page-name" id="pageName">BẢNG TÍNH TRẢ GÓP</div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="#">Bảng tính trả góp</a>
+            <a href="#">#</a>
+            <a href="#">#</a>
+        </div>
+    </header>
+
+    <div class="container1">
+        <div class="action-buttons">
+            <button class="btn-action btn-print">In</button>
+            <button class="btn-action btn-share">Chia sẻ</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <div class="form-group">
+                <label>Tên khách hàng</label>
+                <form>
+                    <input type="text" id="customerName" placeholder="Họ và tên">
+                </form>
+            </div>
+            <div class="form-group">
+                <label>Tên sản phẩm</label>
+                <form>
+                    <input type="text" id="productName" placeholder="Tên sản phẩm">
+                </form>
+            </div>
+            <div class="form-group">
+                <label>Giá sản phẩm</label>
+                <div class="input-with-unit">
+                    <form>
+                        <input type="tel" id="productPrice" placeholder="0" inputmode="numeric">
+                        <span>VNĐ</span>
+                    </form>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Trả trước (DP)</label>
+                <div class="input-with-unit">
+                    <form>
+                        <input type="tel" id="prepaid" placeholder="0" inputmode="numeric">
+                        <span>VNĐ</span>
+                    </form>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="calcButton">DP</button>
+            </div>
+            <div class="error-note1 error-empty-price">Vui lòng nhập giá sản phẩm!</div>
+            <div class="error-note1 error-prepaid">Trả trước không được lớn hơn giá sản phẩm!</div>
+            <div class="result-box"></div>
+        </div>
+
+        <div class="section">
+            <div class="form-group">
+                <label>Bảo hiểm khoản vay</label>
+                <select id="insuranceRate">
+                    <option value="0">Chọn (%)</option>
+                    <option value="6.6">6.6%</option>
+                    <option value="7">7%</option>
+                </select>
+            </div>
+            <div class="insurance-note">BHKV = Khoản vay (LA) * Hệ số bảo hiểm</div>
+            <div class="button-group">
+                <button id="addInsurance">BHKV</button>
+            </div>
+            <div class="error-note1 error-empty-bh">Vui lòng nhập số khoản vay!</div>
+            <div class="result-box insurance-box"></div>
+        </div>
+
+        <div class="section">
+            <div class="form-group">
+                <label>Khoản vay (LA)</label>
+                <div class="input-with-unit">
+                    <form>
+                        <input type="tel" id="loanAmount" placeholder="0" inputmode="numeric">
+                        <span>VNĐ</span>
+                    </form>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Thời hạn</label>
+                <div class="input-with-unit">
+                    <form>
+                        <input type="tel" id="loanTerm" placeholder="0" inputmode="numeric">
+                        <span>Tháng</span>
+                    </form>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Lãi suất</label>
+                <div class="input-with-unit">
+                    <form>
+                        <input type="tel" id="interestRate" placeholder="0" inputmode="decimal">
+                        <span>%/năm</span>
+                    </form>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-with-unit">
+                    <input type="tel" id="monthlyInterestRate" placeholder="0" readonly class="no-interaction">
+                    <span>%/tháng</span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button id="viewTable">Xem bảng</button>
+                <button id="feeButton">Phí thu hộ</button>
+                <button id="deleteButton">Xoá tất cả</button>
+            </div>
+
+            <div class="button-note-box">
+                <div class="error-note error-empty-schedule">Vui lòng nhập đủ thông tin khoản vay, thời hạn, lãi suất!</div>
+                <div class="button-note btn-fee-note" style="display:none"></div>
+                <div class="button-note btn-delete-note" style="display:none">Đã xoá toàn bộ dữ liệu</div>
+                <div class="button-note btn-view-note" style="display:none">Bảng trả góp</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div id="tableWrap"></div>
+        </div>
+    </div>
+
+    <div id="printArea" class="d-none">
+        <h2>BẢNG TRẢ GÓP</h2>
+        <div id="printInfo"></div>
+        <div id="printTable"></div>
+    </div>
+    <footer class="nxk">
+        © 2025 - Nguyễn Xuân Khuê
+    </footer>
+    <script src="js/bttg.js"></script>
+    <script src="js/menu_bttg.js"></script>
+</body>
+
+</html>
