@@ -462,3 +462,11 @@ const resetOnInputChange = () => {
         }
     });
 });
+
+document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            this.blur();
+        }
+    });
+});
