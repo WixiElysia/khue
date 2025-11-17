@@ -139,7 +139,7 @@ addInsurance.onclick = () => {
     if (!rate) {
         insuranceBox.innerHTML = `<div>Trả góp: <span class="amount">${formatNum(originalLoanAmount)} VNĐ</span></div>`;
         insuranceBox.style.display = 'block';
-        loanInput.value = formatNum(originalLoanAmount);
+        loanInput.value = '';
     } else {
         const fee = Math.round(originalLoanAmount * rate / 100);
         const total = originalLoanAmount + fee;
