@@ -462,11 +462,3 @@ const resetOnInputChange = () => {
         }
     });
 });
-document.querySelectorAll('input[type="tel"]').forEach(input => {
-    input.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.keyCode === 13) {
-            event.preventDefault();
-            input.blur();
-        }
-    });
-});
