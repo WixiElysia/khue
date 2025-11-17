@@ -116,7 +116,7 @@ calcButton.onclick = () => {
     const remain = price - prepaid;
     originalLoanAmount = remain;
 
-    resultBox.innerHTML = `<div>Trả trước: <span class="percent">${percent}%</span></div><div>Còn lại trả góp: <span class="amount">${formatNum(remain)} VNĐ</span></div>`;
+    resultBox.innerHTML = `<div>Trả trước: <span class="percent">${percent}%</span></div><div>Trả góp: <span class="amount">${formatNum(remain)} VNĐ</span></div>`;
     resultBox.style.display = 'block';
     loanInput.value = formatNum(remain);
 
@@ -137,17 +137,17 @@ addInsurance.onclick = () => {
 
     const rate = parseFloat(insuranceRate.value);
     if (!rate) {
-        insuranceBox.innerHTML = `<div>Còn lại trả góp: <span class="amount">${formatNum(originalLoanAmount)} VNĐ</span></div>`;
+        insuranceBox.innerHTML = `<div>Trả góp: <span class="amount">${formatNum(originalLoanAmount)} VNĐ</span></div>`;
         insuranceBox.style.display = 'block';
         loanInput.value = formatNum(originalLoanAmount);
     } else {
         const fee = Math.round(originalLoanAmount * rate / 100);
         const total = originalLoanAmount + fee;
         insuranceBox.innerHTML = `
-            <div>Còn lại trả góp: <span class="amount">${formatNum(originalLoanAmount)} VNĐ</span></div>
-            <div>Thêm bảo hiểm: <span class="percent">${rate}%</span></div>
-            <div>Phí bảo hiểm: <span class="amount1">+${formatNum(fee)} VNĐ</span></div>
-            <div>Đã gồm có bảo hiểm: <span class="amount">${formatNum(total)} VNĐ</span></div>
+            <div>Trả góp: <span class="amount">${formatNum(originalLoanAmount)} VNĐ</span></div>
+            <div>Thêm BHKV: <span class="percent">${rate}%</span></div>
+            <div>Phí BHKV: <span class="amount1">+${formatNum(fee)} VNĐ</span></div>
+            <div>Đã gồm có BHKV: <span class="amount">${formatNum(total)} VNĐ</span></div>
         `;
         insuranceBox.style.display = 'block';
         loanInput.value = formatNum(total);
@@ -365,7 +365,7 @@ function captureAndDownload(mode) {
         <p><strong>Giá sản phẩm:</strong> ${safeValue(priceInput)} VNĐ</p>
         <p><strong>Trả trước:</strong> ${safeValue(prepaidInput)} VNĐ</p>
         ${insuranceText}
-        <p><strong>Còn lại trả góp:</strong> ${safeValue(loanInput)} VNĐ</p>
+        <p><strong>Trả góp:</strong> ${safeValue(loanInput)} VNĐ</p>
         <p><strong>Thời hạn:</strong> ${termInput.value.trim() || '0'} tháng</p>
         <p><strong>Lãi suất:</strong> ${rAnnual || '0'}%/năm (${rMonthly}%/tháng)</p>
         ${feeText}
