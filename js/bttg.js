@@ -196,7 +196,7 @@ viewTableBtn.onclick = () => {
         <th>No.</th>
         <th>Trả mỗi kỳ</th>
         <th>Gốc</th>
-        <th>Lãi</th>
+        <th>Lãi suất</th>
         <th>Số dư</th>
     </tr></thead><tbody>`;
 
