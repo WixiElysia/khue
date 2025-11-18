@@ -463,16 +463,9 @@ const resetOnInputChange = () => {
     });
 });
 
-document.getElementById('productName').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        document.getElementById('productPrice').focus();
-    }
-});
-
-document.getElementById('productPrice').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        this.blur();
-    }
-});
+document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            this.blur();
+        }
+    });
